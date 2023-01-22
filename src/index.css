@@ -33,12 +33,24 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  background-color: #999;
+  color: #111;
+  cursor: not-allowed;
+}
+
 button.delete {
   background-color: rgb(221, 23, 56);
 }
 
+button.cancel {
+  background-color: transparent;
+  border: 2px solid white;
+}
+
 button {
   background-color: rgb(23, 59, 221);
+  font-family: inherit;
 }
 
 button:focus,
@@ -58,6 +70,9 @@ button:focus-visible {
   padding: 1rem;
   background-color: #333;
   border-radius: .5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .flex {
@@ -76,7 +91,7 @@ button:focus-visible {
   top: 0px;
   left: 0px;
   inset: 0px;
-  background-color: #ffffff30;
+  background-color: #ffffff20;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,13 +99,43 @@ button:focus-visible {
 
 .card {
   background-color: #222;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: .5rem;
-}
-
-.form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  gap: 1rem;
+}
+
+.h2 {
+  font-size: 1rem;
+}
+
+form {
+  min-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+input,
+textarea {
+  padding: 1rem;
+  border-radius: .5rem;
+  border: 3px solid transparent;
+  outline: none;
+  font-family: inherit;
+  background-color: #111;
+  color: white;
+}
+
+
+input:focus-visible,
+textarea:focus-visible {
+  border: 3px solid rgb(255, 75, 20);
 }

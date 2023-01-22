@@ -3,11 +3,12 @@ import { useContext, useEffect, useState } from "preact/hooks";
 import "./app.css";
 import { db } from "./firebase";
 import { PostsContext } from "./PostsContext";
-import Dashboard from "./Dashboard";
+import Dashboard from "./components/Dashboard";
 
 export function App() {
   const [loading, setLoading] = useState(true);
   const [postsContext, setPostsContext] = useContext(PostsContext);
+  const [route, setRoute] = useState("/");
 
   useEffect(() => {
     async function fetchPosts() {
@@ -26,15 +27,15 @@ export function App() {
     fetchPosts();
   }, []);
 
-  if (window.location.pathname === "/dashboard") {
-    return <Dashboard />;
+  if (route === "dashboard") {
+    return <Dashboard route={route} setRoute={setRoute} />;
   }
 
   return (
-    <>
+    <div className="app">
       <header>
         <h1>Posts</h1>
-        <a href="/dashboard">Dashabord</a>
+        <div onClick={() => setRoute("dashboard")}>Dashabord</div>
       </header>
 
       {loading ? (
@@ -48,10 +49,13 @@ export function App() {
             </div>
           ))}
           {postsContext.length < 1 && (
-            <div className="no-posts">No posts were found!</div>
+            <div className="no-posts">
+              No posts were found! Go ahead and add one
+              <div onClick={() => setRoute("dashboard")}>Dashboard</div>
+            </div>
           )}
         </div>
       )}
-    </>
+    </div>
   );
 }
