@@ -35,7 +35,9 @@ export function App() {
     <div className="app">
       <header>
         <h1>Posts</h1>
-        <div onClick={() => setRoute("dashboard")}>Dashabord</div>
+        <div className="page-link" onClick={() => setRoute("dashboard")}>
+          Dashabord
+        </div>
       </header>
 
       {loading ? (

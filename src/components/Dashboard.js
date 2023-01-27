@@ -38,7 +38,9 @@ export default function Dashboard({ route, setRoute }) {
     <div>
       <header>
         <h1>Dashboard</h1>
-        <div onClick={() => setRoute("/")}>Posts</div>
+        <div className="page-link" onClick={() => setRoute("/")}>
+          Posts
+        </div>
       </header>
 
       <button className="add-post" onClick={() => setShowAddModal(true)}>

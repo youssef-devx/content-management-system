@@ -24,6 +24,11 @@ header {
 
 h1 {}
 
+.page-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 button {
   padding: .8rem .5rem;
   font-weight: bold;
