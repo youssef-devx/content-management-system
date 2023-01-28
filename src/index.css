@@ -8,12 +8,12 @@
 
 a {
   text-decoration: none;
-  color: white;
+  color: #fffdf9;
 }
 
 body {
-  background-color: #222;
-  color: white;
+  background-color: #13223a;
+  color: #fffdf9;
 }
 
 header {
@@ -22,39 +22,50 @@ header {
   justify-content: space-between;
 }
 
-h1 {}
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
 .page-link {
+  padding: .5rem;
+  background-color: #82abfc;
+  color: #13223a;
+  display: inline-block;
+  border-radius: .3rem;
   text-decoration: underline;
   cursor: pointer;
 }
 
 button {
+  width: max-content;
   padding: .8rem .5rem;
   font-weight: bold;
-  color: white;
+  color: #fffdf9;
   border-radius: .5rem;
   border: none;
   cursor: pointer;
 }
 
-button:disabled {
+button:disabled:not(.delete) {
   background-color: #999;
   color: #111;
   cursor: not-allowed;
 }
 
 button.delete {
-  background-color: rgb(221, 23, 56);
+  border: 2px solid #fffdf9;
+  background-color: transparent;
 }
 
 button.cancel {
   background-color: transparent;
-  border: 2px solid white;
+  border: 2px solid #fffdf9;
 }
 
 button {
-  background-color: rgb(23, 59, 221);
+  background-color: #084af4;
   font-family: inherit;
 }
 
@@ -63,9 +74,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-
 .posts {
-  margin-top: 5rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 1rem;
@@ -73,7 +82,7 @@ button:focus-visible {
 
 .post {
   padding: 1rem;
-  background-color: #333;
+  background-color: #0e192b;
   border-radius: .5rem;
   display: flex;
   flex-direction: column;
@@ -82,12 +91,17 @@ button:focus-visible {
 
 .flex {
   display: flex;
+  align-items: center;
   gap: 1rem;
 }
 
 .no-posts {
   padding: 1rem;
-  background-color: #333;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: max-content;
+  background-color: #0e192b;
   border-radius: .5rem;
 }
 
@@ -103,7 +117,8 @@ button:focus-visible {
 }
 
 .card {
-  background-color: #222;
+  min-width: 50%;
+  background-color: #13223a;
   padding: 2rem;
   border-radius: .5rem;
   display: flex;
@@ -117,7 +132,6 @@ button:focus-visible {
 }
 
 form {
-  min-width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -130,17 +144,18 @@ label {
 
 input,
 textarea {
-  padding: 1rem;
+  padding: .5rem;
   border-radius: .5rem;
   border: 3px solid transparent;
   outline: none;
   font-family: inherit;
-  background-color: #111;
-  color: white;
+  font-size: 1rem;
+  background-color: #0e192b;
+  color: #fffdf9;
 }
 
 
 input:focus-visible,
 textarea:focus-visible {
-  border: 3px solid rgb(255, 75, 20);
+  border: 3px solid #82abfc;
 }

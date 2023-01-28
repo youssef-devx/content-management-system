@@ -32,17 +32,28 @@ export function App() {
   }
 
   return (
-    <div className="app">
+    <>
       <header>
-        <h1>Posts</h1>
+        <h1>CMS</h1>
         <div className="page-link" onClick={() => setRoute("dashboard")}>
           Dashabord
         </div>
       </header>
 
-      {loading ? (
-        <div className="loading">Loading...</div>
-      ) : (
+      <main>
+        <h2>Posts</h2>
+        {loading ? (
+          <div className="loading">Loading...</div>
+        ) : (
+          postsContext.length < 1 && (
+            <div className="no-posts">
+              No posts were found! Go ahead and add one
+              <div className="page-link" onClick={() => setRoute("dashboard")}>
+                Dashboard
+              </div>
+            </div>
+          )
+        )}
         <div className="posts">
           {postsContext.map((post) => (
             <div className="post" key={post.id}>
@@ -50,14 +61,8 @@ export function App() {
               <p>{post.description}</p>
             </div>
           ))}
-          {postsContext.length < 1 && (
-            <div className="no-posts">
-              No posts were found! Go ahead and add one
-              <div onClick={() => setRoute("dashboard")}>Dashboard</div>
-            </div>
-          )}
         </div>
-      )}
-    </div>
+      </main>
+    </>
   );
 }

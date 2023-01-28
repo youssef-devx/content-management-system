@@ -35,7 +35,7 @@ export default function Dashboard({ route, setRoute }) {
   }
 
   return (
-    <div>
+    <>
       <header>
         <h1>Dashboard</h1>
         <div className="page-link" onClick={() => setRoute("/")}>
@@ -43,38 +43,40 @@ export default function Dashboard({ route, setRoute }) {
         </div>
       </header>
 
-      <button className="add-post" onClick={() => setShowAddModal(true)}>
-        Create Post
-      </button>
-      <div className="posts">
-        {postsContext.map((post) => (
-          <div className="post" key={post.id}>
-            <h1>{post.title}</h1>
-            <p>{post.description}</p>
-            <div className="flex">
-              <button
-                className="edit"
-                onClick={() =>
-                  handleShowEdit(post.id, post.title, post.description)
-                }
-              >
-                Edit
-              </button>
-              <button
-                className="delete"
-                onClick={() => handleShowDelete(post.id)}
-              >
-                Delete
-              </button>
+      <main>
+        <button className="add-post" onClick={() => setShowAddModal(true)}>
+          Create Post
+        </button>
+        <div className="posts">
+          {postsContext.map((post) => (
+            <div className="post" key={post.id}>
+              <h1>{post.title}</h1>
+              <p>{post.description}</p>
+              <div className="flex">
+                <button
+                  className="edit"
+                  onClick={() =>
+                    handleShowEdit(post.id, post.title, post.description)
+                  }
+                >
+                  Edit
+                </button>
+                <button
+                  className="delete"
+                  onClick={() => handleShowDelete(post.id)}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
-        {postsContext.length < 1 && (
-          <div className="no-posts">
-            <span>No posts were found! Go ahead and add one</span>
-          </div>
-        )}
-      </div>
+          ))}
+          {postsContext.length < 1 && (
+            <div className="no-posts">
+              <span>No posts were found! Go ahead and add one</span>
+            </div>
+          )}
+        </div>
+      </main>
 
       {showAddModal && (
         <AddModal
@@ -97,6 +99,6 @@ export default function Dashboard({ route, setRoute }) {
           setPostsContext={setPostsContext}
         />
       )}
-    </div>
+    </>
   );
 }
