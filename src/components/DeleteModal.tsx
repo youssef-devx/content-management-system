@@ -1,6 +1,6 @@
 import { deleteDoc, doc } from "firebase/firestore";
 import { useState } from "preact/hooks";
-import { db } from "../firebase";
+import { db } from "../../firebase";
 
 export default function DeleteModal({
   postId,

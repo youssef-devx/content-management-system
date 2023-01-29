@@ -1,26 +1,25 @@
-import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  updateDoc,
-} from "firebase/firestore";
+import { Fragment, h } from 'preact'
 import { useContext, useState } from "preact/hooks";
-import { db } from "../firebase";
 import { PostsContext } from "../PostsContext";
-import AddModal from "./AddModal";
-import DeleteModal from "./DeleteModal";
-import EditModal from "./EditModal";
+import AddModal from "../components/AddModal";
+import DeleteModal from "../components/DeleteModal";
+import EditModal from "../components/EditModal";
 
-export default function Dashboard({ route, setRoute }) {
-  const [postsContext, setPostsContext] = useContext(PostsContext);
+export type Post = {
+  id: string;
+  title: string;
+  description: string
+}
+
+export default function Dashboard({ route, setRoute }:{route: string, setRoute: any}) {
+  const [postsContext, setPostsContext] = useContext<any>(PostsContext);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [postId, setPostId] = useState("");
   const [toBeUpdatedPostData, setToBeUpdatedPostData] = useState({});
 
-  function handleShowEdit(id, postTitle, postDescription) {
+  function handleShowEdit(id: string, postTitle: string, postDescription: string) {
     setToBeUpdatedPostData({
       title: postTitle,
       description: postDescription,
@@ -29,7 +28,7 @@ export default function Dashboard({ route, setRoute }) {
     setShowEditModal(true);
   }
 
-  function handleShowDelete(id) {
+  function handleShowDelete(id: string) {
     setPostId(id);
     setShowDeleteModal(true);
   }
@@ -48,7 +47,7 @@ export default function Dashboard({ route, setRoute }) {
           Create Post
         </button>
         <div className="posts">
-          {postsContext.map((post) => (
+          {postsContext.map((post: Post) => (
             <div className="post" key={post.id}>
               <h1>{post.title}</h1>
               <p>{post.description}</p>

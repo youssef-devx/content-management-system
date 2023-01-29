@@ -1,13 +1,14 @@
 import { collection, getDocs } from "firebase/firestore";
 import { useContext, useEffect, useState } from "preact/hooks";
 import "./app.css";
-import { db } from "./firebase";
+import { db } from "../firebase";
 import { PostsContext } from "./PostsContext";
 import Dashboard from "./components/Dashboard";
+import { Fragment, h } from 'preact'
 
 export function App() {
   const [loading, setLoading] = useState(true);
-  const [postsContext, setPostsContext] = useContext(PostsContext);
+  const [postsContext, setPostsContext] = useContext<any>(PostsContext);
   const [route, setRoute] = useState("/");
 
   useEffect(() => {
@@ -16,7 +17,7 @@ export function App() {
 
       querySnapshot.forEach((doc) => {
         console.log(doc.id, " => ", doc.data());
-        setPostsContext((prevPosts) => [
+        setPostsContext((prevPosts: any) => [
           ...prevPosts,
           { ...doc.data(), id: doc.id },
         ]);
@@ -55,7 +56,7 @@ export function App() {
           )
         )}
         <div className="posts">
-          {postsContext.map((post) => (
+          {postsContext.map((post: { id: any; title: any; description: any; }) => (
             <div className="post" key={post.id}>
               <h2>{post.title}</h2>
               <p>{post.description}</p>

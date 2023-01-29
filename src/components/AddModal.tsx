@@ -1,6 +1,6 @@
 import { addDoc, collection } from "firebase/firestore";
 import { useState } from "preact/hooks";
-import { db } from "../firebase";
+import { db } from "../../firebase";
 
 export default function AddModal({ setShowAddModal, setPostsContext }) {
   const [loading, setLoading] = useState(false);
