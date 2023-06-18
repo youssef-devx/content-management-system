@@ -1,4 +1,4 @@
-# content-management-system
+# content-management-system (this an abandoned project for now)
 
 This small app is for creating, editing, deleting posts.
 
